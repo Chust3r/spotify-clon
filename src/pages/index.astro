@@ -1,0 +1,18 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Greetings from '@components/UI/Greetings.svelte'
+import Playlist from '@components/Playlist.astro'
+
+import { playlists } from '../data/playlists'
+---
+
+<Layout title='Spotify'>
+	<div
+		class='w-full h-72 absolute inset-0 -z-[1] blur-3xl -translate-y-10 bg-gradient-to-r from-neutral-600/40'
+	>
+	</div>
+	<Greetings client:visible />
+	<section class='grid grid-cols-2 lg:grid-cols-3 gap-2 py-5 px-4'>
+		{playlists.map((playlist) => <Playlist {...playlist} />)}
+	</section>
+</Layout>

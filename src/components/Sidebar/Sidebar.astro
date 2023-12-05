@@ -1,0 +1,34 @@
+---
+import Box from '../UI/Box.tsx'
+import SidebarItem from './SidebarItem.astro'
+import Home from '@icons/Home.tsx'
+import Search from '@icons/Search.tsx'
+import Library from '@icons/Library.tsx'
+import SideOption from './SideOption.astro'
+
+import { playlists } from '../../data/playlists.ts'
+---
+
+<aside class='[grid-area:sidebar] flex flex-col gap-2 overflow-hidden'>
+	<Box
+		className='h-32 rounded-md py-5 flex flex-col justify-center gap-5 px-4'
+	>
+		<a href='/'>
+			<SideOption>
+				<Home /> Inicio
+			</SideOption></a
+		>
+		<SideOption>
+			<Search /> Buscar
+		</SideOption>
+	</Box>
+
+	<Box className='h-full rounded-md flex flex-col overflow-hidden'>
+		<SideOption>
+			<Library /> Tu biblioteca
+		</SideOption>
+		<section class='my-4'>
+			{playlists.map((playlist) => <SidebarItem {...playlist} />)}
+		</section>
+	</Box>
+</aside>

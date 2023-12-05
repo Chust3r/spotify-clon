@@ -1,0 +1,17 @@
+---
+import Controls from './Controls'
+import MusicInfo from './MusicInfo'
+---
+
+<div class='flex items-center justify-center h-full w-full'>
+	<MusicInfo
+		client:load
+		transition:persist
+		transition:name='music-player-info'
+	/>
+	<Controls
+		client:load
+		transition:persist
+		transition:name='music-player-controls'
+	/>
+</div>

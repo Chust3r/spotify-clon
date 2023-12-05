@@ -1,0 +1,64 @@
+---
+import Layout from '@layouts/Layout.astro'
+import { playlists } from '../../data/playlists'
+import { cn } from '@utils/cn'
+import PlaylistBtn from '@components/UI/PlaylistBtn'
+
+const { id } = Astro.params
+
+const playlist = playlists.find((playlist) => playlist.id === id)
+
+const { title, thumbnail, color, type, author, songs } = playlist
+
+const titleLength = title.length > 13
+---
+
+<Layout title='Spotify'>
+	<section class='flex flex-col gap-3'>
+		<div
+			class={cn(
+				'absolute inset-0 h-[500px] blur-3xl fade -z-[1] -translate-y-10',
+				color
+			)}
+		>
+		</div>
+		<div class='flex gap-3 px-4 overflow-hidden'>
+			<img
+				src={thumbnail}
+				alt=''
+				class='w-60 h-60 aspect-square shadow-xl'
+				transition:name={`playlist-cover-${title}`}
+			/>
+			<div class='flex flex-col gap-2 justify-end'>
+				<span class='text-white'>{type}</span>
+				<h2
+					class={cn('text-8xl font-bold text-white truncate', {
+						'text-7xl': titleLength,
+					})}
+					transition:name={`playlist-${title}`}
+				>
+					{title}
+				</h2>
+				<div class='flex items-center gap-3'>
+					<img
+						src={thumbnail}
+						alt=''
+						class='w-6 h-6 rounded-full overflow-hidden'
+					/>
+					<p class='text-white font-medium'>{author}</p>
+				</div>
+			</div>
+		</div>
+		<div class='bg-background/60 w-full h-96 backdrop-blur px-4 py-4'>
+			<div class='w-full h-16'>
+				<PlaylistBtn
+					client:visible
+					songs={songs}
+					id={id}
+					wrapperClasses='w-14 h-14'
+					iconClasses='w-5 h-5'
+				/>
+			</div>
+		</div>
+	</section>
+</Layout>
