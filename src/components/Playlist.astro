@@ -2,6 +2,7 @@
 import type { Song } from 'src/data/songs'
 import PlaylistBtn from './UI/PlaylistBtn'
 
+
 interface Props {
 	id: string
 	thumbnail: string
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const { color, thumbnail, title, id, songs } = Astro.props
+
 ---
 
 <a
@@ -35,7 +37,7 @@ const { color, thumbnail, title, id, songs } = Astro.props
 		</p>
 
 		<PlaylistBtn
-			client:visible
+			client:load
 			songs={songs}
 			id={id}
 			wrapperClasses='opacity-0 group-hover:opacity-100 mr-1 transition-all duration-500'

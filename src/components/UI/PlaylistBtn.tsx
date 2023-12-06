@@ -1,7 +1,11 @@
-import Play from '@icons/Play'
-import { cn } from '@utils/cn'
 import type { Song } from 'src/data/songs'
+import { useState, useEffect } from 'react'
+import { useStore } from '@nanostores/react'
+import { musicStore, setPlay } from '../../stores/music.ts'
 import { setSongs } from 'src/stores/music'
+import { cn } from '@utils/cn'
+import Play from '@icons/Play'
+import Pause from '@icons/Pause'
 
 interface PlayBtnProps {
 	songs: Song[]
@@ -16,9 +20,28 @@ const PlaylistBtn = ({
 	iconClasses,
 	wrapperClasses,
 }: PlayBtnProps) => {
+	const iconStyles = cn('w-4 h-4 fill-black stroke-black ', iconClasses)
+
+	const store = useStore(musicStore)
+
+	const [isActive, setIsActive] = useState(false)
+
 	const handleClick = () => {
-		setSongs(songs, id)
+		if (id === store.id) {
+			if (store.isPlay) {
+				setPlay(false)
+			} else {
+				setPlay(true)
+			}
+		} else {
+			setSongs(songs, id)
+			setPlay(true)
+		}
 	}
+
+	useEffect(() => {
+		setIsActive(id === store.id && store.isPlay)
+	}, [store.id, store.isPlay])
 
 	return (
 		<div
@@ -29,7 +52,11 @@ const PlaylistBtn = ({
 			)}
 			onClick={handleClick}
 		>
-			<Play className={cn('w-4 h-4 fill-black stroke-black', iconClasses)} />
+			{!isActive ? (
+				<Play className={iconStyles} />
+			) : (
+				<Pause className={iconStyles} />
+			)}
 		</div>
 	)
 }

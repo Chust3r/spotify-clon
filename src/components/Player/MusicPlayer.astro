@@ -1,6 +1,7 @@
 ---
-import Controls from './Controls'
+import Controls from './MainControls'
 import MusicInfo from './MusicInfo'
+import SControls from "./SecondaryControls"
 ---
 
 <div class='flex items-center justify-center h-full w-full'>
@@ -13,5 +14,10 @@ import MusicInfo from './MusicInfo'
 		client:load
 		transition:persist
 		transition:name='music-player-controls'
+	/>
+	<SControls
+		client:load
+		transition:persist
+		transition:name='music-player-scontrols'
 	/>
 </div>

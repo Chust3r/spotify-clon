@@ -1,64 +1,54 @@
 import { useState, useEffect, type MutableRefObject } from 'react'
 
 interface UseAudioProps {
-	src: string
-	id: string
 	ref: MutableRefObject<HTMLAudioElement>
-	onEnd?: () => void
+	options: {
+		id: string
+		src: string
+		volume?: number
+		play?: boolean
+		autoplay?: boolean
+	}
 }
 
-export const useAudio = ({ id, ref, src, onEnd }: UseAudioProps) => {
+export const useAudio = ({ ref, options }: UseAudioProps) => {
+	const { id, src, volume, play, autoplay } = options
+
 	const [duration, setDuration] = useState(0)
 	const [loaded, setLoaded] = useState(false)
-	const [isPlay, setIsplay] = useState(false)
 	const [progress, setProgress] = useState(0)
-	const [volume, setVolume] = useState(0.1)
 
 	useEffect(() => {
 		setLoaded(true)
 		ref.current.src = src
-		ref.current.volume = volume
+		ref.current.volume = volume || 1
 		ref.current.onloadedmetadata = () => {
 			setDuration(ref.current.duration)
 		}
 		ref.current.ontimeupdate = () => {
 			setProgress(ref.current.currentTime)
 		}
-		ref.current.onended = () => {
-			if (onEnd) {
-				onEnd()
-			}
-		}
-		ref.current.onplay = () => {
-			setIsplay(true)
-		}
+		ref.current.onended = () => {}
 	}, [])
 
 	useEffect(() => {
 		ref.current.src = src
-		ref.current.autoplay = true
+		ref.current.autoplay = autoplay || false
 	}, [src, id])
 
+	useEffect(() => {
+		ref.current.volume = volume ?? 1
+	}, [volume])
+
+	useEffect(() => {
+		if (play) {
+			ref.current.play()
+		} else {
+			ref.current.pause()
+		}
+	}, [play])
+
 	// → actions
-
-	const play = () => {
-		if (loaded) {
-			if (isPlay) {
-				ref.current.pause()
-				setIsplay(false)
-			} else {
-				ref.current.play()
-				setIsplay(true)
-			}
-		}
-	}
-
-	const updateVolume = (volume: number) => {
-		if (loaded) {
-			ref.current.volume = volume
-			setVolume(volume)
-		}
-	}
 
 	const updatePosition = (newPosition: number) => {
 		if (loaded) {
@@ -66,13 +56,5 @@ export const useAudio = ({ id, ref, src, onEnd }: UseAudioProps) => {
 		}
 	}
 
-	const actions = {
-		play,
-		setVolume: updateVolume,
-		setPosition: updatePosition,
-	}
-
-	const info = { progress, duration, volume, isPlay }
-
-	return { actions, info }
+	return { setPosition: updatePosition, progress, duration }
 }
