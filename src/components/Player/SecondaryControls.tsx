@@ -1,6 +1,6 @@
 import { useStore } from '@nanostores/react'
 import { useState } from 'react'
-import { musicStore, setVolume } from 'src/stores/music'
+import { musicStore, setVolume } from '@stores/music'
 import Volume from '@icons/Volume'
 import Slider from '@components/Player/Slider'
 

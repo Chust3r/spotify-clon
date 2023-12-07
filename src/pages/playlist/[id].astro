@@ -26,13 +26,13 @@ const titleLength = title.length > 13
 			<img
 				src={thumbnail}
 				alt=''
-				class='w-60 h-60 aspect-square shadow-xl'
+				class='w-60 h-60 aspect-square shadow-2xl rounded'
 				transition:name={`playlist-cover-${title}`}
 			/>
 			<div class='flex flex-col gap-2 justify-end'>
 				<span class='text-white'>{type}</span>
 				<h2
-					class={cn('text-8xl font-bold text-white truncate', {
+					class={cn('text-8xl font-bold text-white truncate ', {
 						'text-7xl': titleLength,
 					})}
 					transition:name={`playlist-${title}`}

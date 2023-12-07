@@ -1,5 +1,5 @@
 import { useStore } from '@nanostores/react'
-import { musicStore } from 'src/stores/music'
+import { musicStore } from '@stores/music'
 
 const MusicInfo = () => {
 	const { songs, current } = useStore(musicStore)

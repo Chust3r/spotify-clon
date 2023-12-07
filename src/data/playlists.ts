@@ -1,4 +1,9 @@
-import { type Song, songs_HIVE, songs_PESO_PLUMA } from './songs'
+import {
+	type Song,
+	songs_HIVE,
+	songs_PESO_PLUMA,
+	songs_BELLA_POARCH,
+} from './songs'
 export type Playlist = {
 	id: string
 	title: string
@@ -9,6 +14,8 @@ export type Playlist = {
 	color: string
 }
 
+console.log(songs_BELLA_POARCH)
+
 export const playlists: Playlist[] = [
 	{
 		id: '1',
@@ -18,7 +25,7 @@ export const playlists: Playlist[] = [
 		author: 'Sub Urban',
 		type: 'Álbum',
 		songs: songs_HIVE,
-		color: 'bg-gradient-to-r from-red-900',
+		color: 'bg-red-900',
 	},
 	{
 		id: '2',
@@ -30,15 +37,15 @@ export const playlists: Playlist[] = [
 		songs: songs_PESO_PLUMA,
 		color: 'bg-gradient-to-r from-neutral-600/50',
 	},
-	/* {
+	{
 		id: '3',
 		title: 'Build a Bitch',
 		thumbnail:
 			'https://i.scdn.co/image/ab67616d00001e02aeeb722667c831a4f5429ff0',
 		author: 'Bella Poarch',
 		type: 'Álbum',
-		songs: songs_HIVE,
-		color: 'bg-gradient-to-r from-yellow-200/50 via-red-300/50 to-yellow-200/50',
+		songs: songs_BELLA_POARCH,
+		color: 'bg-rose-500/60',
 	},
 	{
 		id: '4',
@@ -59,5 +66,5 @@ export const playlists: Playlist[] = [
 		type: 'Álbum',
 		songs: songs_HIVE,
 		color: 'bg-gradient-to-r from-red-400/50 via-gray-300/70 to-blue-500/50',
-	}, */
+	},
 ]

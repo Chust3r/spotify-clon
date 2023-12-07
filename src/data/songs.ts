@@ -52,4 +52,15 @@ const songs_PESO_PLUMA: Song[] = [
 	},
 ]
 
-export { songs_HIVE, songs_PESO_PLUMA }
+const songs_BELLA_POARCH: Song[] = [
+	{
+		id: 1,
+		title: 'Build a Btch',
+		authors: ['Bella Poarch'],
+		src: '/public/music/04/BellaPoarchBuild a Btch.mp3',
+		thumbnail:
+			'https://i.scdn.co/image/ab67616d00001e02aeeb722667c831a4f5429ff0',
+	},
+]
+
+export { songs_HIVE, songs_PESO_PLUMA, songs_BELLA_POARCH }

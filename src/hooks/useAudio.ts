@@ -8,11 +8,12 @@ interface UseAudioProps {
 		volume?: number
 		play?: boolean
 		autoplay?: boolean
+		onEnded?: () => void
 	}
 }
 
 export const useAudio = ({ ref, options }: UseAudioProps) => {
-	const { id, src, volume, play, autoplay } = options
+	const { id, src, volume, play, autoplay, onEnded } = options
 
 	const [duration, setDuration] = useState(0)
 	const [loaded, setLoaded] = useState(false)
@@ -28,12 +29,18 @@ export const useAudio = ({ ref, options }: UseAudioProps) => {
 		ref.current.ontimeupdate = () => {
 			setProgress(ref.current.currentTime)
 		}
-		ref.current.onended = () => {}
+		ref.current.onended = () => {
+			onEnded()
+		}
 	}, [])
 
 	useEffect(() => {
 		ref.current.src = src
-		ref.current.autoplay = autoplay || false
+		if (options.play) {
+			ref.current.autoplay = autoplay || false
+		} else {
+			ref.current.autoplay = false
+		}
 	}, [src, id])
 
 	useEffect(() => {

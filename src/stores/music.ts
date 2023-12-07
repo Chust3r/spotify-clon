@@ -21,34 +21,58 @@ export const musicStore = map<MusicStore>({
 	volume: 1,
 })
 
-const updateQueue = (songs: any[], index: number) => {
+const checkQueue = (index: number) => {
+	const songs = musicStore.get().songs
+
 	const isNextSong = index < songs.length - 1
 	const isPrevSong = index > 0
-	musicStore.setKey('nextSong', isNextSong)
-	musicStore.setKey('prevSong', isPrevSong)
+
+	return {
+		isNextSong,
+		isPrevSong,
+	}
 }
 
 export const setSongs = (songs: Song[], id: string) => {
-	musicStore.setKey('songs', songs)
-	musicStore.setKey('id', id)
-	musicStore.setKey('current', 0)
-	updateQueue(songs, 0)
+	const { isNextSong, isPrevSong } = checkQueue(0)
+
+	musicStore.set({
+		id,
+		songs,
+		current: 0,
+		isPlay: true,
+		volume: 1,
+		nextSong: songs.length === 1 ? false : isNextSong,
+		prevSong: songs.length === 1 ? false : isPrevSong,
+	})
 }
 
 export const nextSong = () => {
 	const store = musicStore.get()
+
 	if (store.nextSong) {
 		musicStore.setKey('current', store.current + 1)
+	} else {
+		musicStore.setKey('isPlay', false)
 	}
-	updateQueue(store.songs, store.current + 1)
+
+	const { isNextSong, isPrevSong } = checkQueue(store.current + 1)
+
+	musicStore.setKey('nextSong', isNextSong)
+	musicStore.setKey('prevSong', isPrevSong)
 }
 
 export const prevSong = () => {
 	const store = musicStore.get()
+
 	if (store.prevSong) {
 		musicStore.setKey('current', store.current - 1)
 	}
-	updateQueue(store.songs, store.current - 1)
+
+	const { isNextSong, isPrevSong } = checkQueue(store.current - 1)
+
+	musicStore.setKey('nextSong', isNextSong)
+	musicStore.setKey('prevSong', isPrevSong)
 }
 
 export const setPlay = (isPlay: boolean) => {

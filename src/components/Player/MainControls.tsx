@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { useStore } from '@nanostores/react'
-import { useAudio } from 'src/hooks/useAudio'
+import { useAudio } from '@hooks/useAudio'
 import Slider from './Slider'
-import { musicStore, nextSong, prevSong, setPlay } from 'src/stores/music'
+import { musicStore, nextSong, prevSong, setPlay } from '@stores/music'
 import Play from '@icons/Play'
 import Pause from '@icons/Pause'
 import Back from '@icons/Back'
@@ -10,6 +10,7 @@ import Next from '@icons/Next'
 import { format } from '@utils/format'
 
 const iconClassNames = 'fill-black w-4 h-4'
+const btnClassNames = 'disabled:cursor-not-allowed disabled:opacity-70'
 
 const Controls = () => {
 	const store = useStore(musicStore)
@@ -27,6 +28,7 @@ const Controls = () => {
 			src: store.songs[store.current].src,
 			volume: store.volume,
 			autoplay: true,
+			onEnded: nextSong,
 		},
 	})
 
@@ -36,7 +38,11 @@ const Controls = () => {
 				<audio ref={audioRef}></audio>
 
 				<div className='flex gap-6'>
-					<button onClick={prevSong}>
+					<button
+						onClick={prevSong}
+						disabled={!store.prevSong}
+						className={btnClassNames}
+					>
 						<Back />
 					</button>
 					<button
@@ -49,7 +55,11 @@ const Controls = () => {
 							<Play className={iconClassNames} />
 						)}
 					</button>
-					<button onClick={nextSong}>
+					<button
+						onClick={nextSong}
+						disabled={!store.nextSong}
+						className={btnClassNames}
+					>
 						<Next />
 					</button>
 				</div>
