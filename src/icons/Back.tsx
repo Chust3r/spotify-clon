@@ -3,7 +3,7 @@ import { cn } from '../utils/cn'
 type IconProps = {
 	className?: string
 }
-const Back = ({ className }: IconProps) => {
+export const Back = ({ className }: IconProps) => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -15,4 +15,4 @@ const Back = ({ className }: IconProps) => {
 	)
 }
 
-export default Back
+

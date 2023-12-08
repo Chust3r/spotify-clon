@@ -8,6 +8,8 @@ const { id } = Astro.params
 
 const playlist = playlists.find((playlist) => playlist.id === id)
 
+if(!playlist) return Astro.redirect("/")
+
 const { title, thumbnail, color, type, author, songs } = playlist
 
 const titleLength = title.length > 13
@@ -17,7 +19,7 @@ const titleLength = title.length > 13
 	<section class='flex flex-col gap-3'>
 		<div
 			class={cn(
-				'absolute inset-0 h-[500px] blur-3xl fade -z-[1] -translate-y-10',
+				'absolute inset-0 h-[600px] blur-3xl fade -z-[1] -translate-y-10',
 				color
 			)}
 		>

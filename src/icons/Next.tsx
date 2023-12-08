@@ -4,7 +4,7 @@ type IconProps = {
 	className?: string
 }
 
-const Next = ({ className }: IconProps) => {
+export const Next = ({ className }: IconProps) => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -16,4 +16,4 @@ const Next = ({ className }: IconProps) => {
 	)
 }
 
-export default Next
+

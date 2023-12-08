@@ -1,7 +1,7 @@
 import { map } from 'nanostores'
 import { songs_HIVE, type Song } from 'src/data/songs'
 
-interface MusicStore {
+export interface MusicStore {
 	id: string
 	songs: Song[]
 	current: number
@@ -41,7 +41,7 @@ export const setSongs = (songs: Song[], id: string) => {
 		songs,
 		current: 0,
 		isPlay: true,
-		volume: 1,
+		volume: musicStore.get().volume,
 		nextSong: songs.length === 1 ? false : isNextSong,
 		prevSong: songs.length === 1 ? false : isPrevSong,
 	})

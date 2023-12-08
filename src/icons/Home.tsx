@@ -4,7 +4,7 @@ type IconProps = {
 	className?: string
 }
 
-const Home = ({ className }: IconProps) => {
+export const Home = ({ className }: IconProps) => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -14,5 +14,3 @@ const Home = ({ className }: IconProps) => {
 		</svg>
 	)
 }
-
-export default Home

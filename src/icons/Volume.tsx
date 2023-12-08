@@ -5,7 +5,7 @@ type IconProps = {
 	value: number
 }
 
-const Volume = ({ className, value }: IconProps) => {
+export const Volume = ({ className, value }: IconProps) => {
 	return (
 		<svg
 			viewBox='0 0 16 16'
@@ -35,4 +35,3 @@ const Volume = ({ className, value }: IconProps) => {
 	)
 }
 
-export default Volume

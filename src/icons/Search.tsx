@@ -4,7 +4,7 @@ type IconProps = {
 	className?: string
 }
 
-const Search = ({ className }: IconProps) => {
+export const Search = ({ className }: IconProps) => {
 	return (
 		<svg
 			viewBox='0 0 24 24'
@@ -15,4 +15,4 @@ const Search = ({ className }: IconProps) => {
 	)
 }
 
-export default Search
+

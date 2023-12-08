@@ -4,7 +4,7 @@ type IconProps = {
 	className?: string
 }
 
-const Pause = ({ className }: IconProps) => {
+export const Pause = ({ className }: IconProps) => {
 	return (
 		<svg
 			data-encore-id='icon'
@@ -17,5 +17,3 @@ const Pause = ({ className }: IconProps) => {
 		</svg>
 	)
 }
-
-export default Pause

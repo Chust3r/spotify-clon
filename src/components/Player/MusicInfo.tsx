@@ -1,10 +1,7 @@
-import { useStore } from '@nanostores/react'
-import { musicStore } from '@stores/music'
+import useMusicInfo from '@hooks/useMusicInfo'
 
 const MusicInfo = () => {
-	const { songs, current } = useStore(musicStore)
-
-	const { authors, thumbnail, title } = songs[current]
+	const { thumbnail, title, authors } = useMusicInfo()
 
 	return (
 		<div className='pl-2 min-w-[250px] w-[430px] flex gap-4 relative overflow-hidden'>

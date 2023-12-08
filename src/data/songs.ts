@@ -57,10 +57,45 @@ const songs_BELLA_POARCH: Song[] = [
 		id: 1,
 		title: 'Build a Btch',
 		authors: ['Bella Poarch'],
-		src: '/public/music/04/BellaPoarchBuild a Btch.mp3',
+		src: '/music/04/BellaPoarchBuild a Btch.mp3',
 		thumbnail:
 			'https://i.scdn.co/image/ab67616d00001e02aeeb722667c831a4f5429ff0',
 	},
+	{
+		id: 2,
+		title: 'Living Hell',
+		authors: ['Bella Poarch'],
+		src: '/music/04/Bella Poarch   Living Hell (Official Music Video[1].mp3',
+		thumbnail:
+			'https://imgs.search.brave.com/bRyK4oUUuRApO0hdZueqAoG3ziFrUpIu8hBkmom2ayM/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pMS5z/bmRjZG4uY29tL2Fy/dHdvcmtzLTRrR1cw/YXQwSE5UVS0wLXQ1/MDB4NTAwLmpwZw',
+	},
 ]
 
-export { songs_HIVE, songs_PESO_PLUMA, songs_BELLA_POARCH }
+const songs_Odisea: Song[] = [
+	{
+		id: 1,
+		title: 'Odisea',
+		authors: ['Ozuna'],
+		src: '/music/05/Odise.mp3',
+		thumbnail:
+			'https://i.scdn.co/image/ab67616d0000b273b0a875d7f1bfe4ec4aaffa48',
+	},
+	{
+		id: 2,
+		title: 'Bebe (feat. Anuel AA)',
+		authors: ['Ozuna', 'Anuel AA'],
+		src: '/music/05/Ozuna FT Anuel AA   Bebe (Lyric Video)   Odise.mp3',
+		thumbnail:
+			'https://i.scdn.co/image/ab67616d0000b273918760935230018b01f7a3f4',
+	},
+	{
+		id: 2,
+		title: 'Tú foto',
+		authors: ['Ozuna', 'Anuel AA'],
+		src: '/music/05/Tú Fot.mp3',
+		thumbnail:
+			'https://i.scdn.co/image/ab67616d0000b2735a0467b3a49a461da243c362',
+	},
+]
+
+export { songs_HIVE, songs_PESO_PLUMA, songs_BELLA_POARCH, songs_Odisea }

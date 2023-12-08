@@ -4,7 +4,7 @@ type IconProps = {
 	className?: string
 }
 
-const Play = ({ className }: IconProps) => {
+export const Play = ({ className }: IconProps) => {
 	return (
 		<svg
 			data-encore-id='icon'
@@ -18,6 +18,4 @@ const Play = ({ className }: IconProps) => {
 	)
 }
 
-export default Play
 
-/* className={cn('w-6 h-6 fill-foreground', className)} */

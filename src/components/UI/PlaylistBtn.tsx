@@ -4,8 +4,7 @@ import { useStore } from '@nanostores/react'
 import { musicStore, setPlay } from '../../stores/music.ts'
 import { setSongs } from 'src/stores/music'
 import { cn } from '@utils/cn'
-import Play from '@icons/Play'
-import Pause from '@icons/Pause'
+import { Play, Pause } from '@icons/index'
 
 interface PlayBtnProps {
 	songs: Song[]
@@ -47,8 +46,11 @@ const PlaylistBtn = ({
 		<div
 			role='button'
 			className={cn(
-				'rounded-full bg-primary grid place-content-center w-8 h-8 shadow-xl shadow- hover:scale-105 transition-all duration-300',
-				wrapperClasses
+				'rounded-full bg-primary grid place-content-center w-8 h-8 shadow-xl shadow- hover:scale-105 ',
+				wrapperClasses,
+				{
+					'opacity-100': isActive,
+				}
 			)}
 			onClick={handleClick}
 		>

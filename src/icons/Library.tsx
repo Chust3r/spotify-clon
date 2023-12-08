@@ -3,7 +3,7 @@ import { cn } from '../utils/cn'
 type IconProps = {
 	className?: string
 }
-const Library = ({ className }: IconProps) => {
+export const Library = ({ className }: IconProps) => {
 	return (
 		<svg
 			viewBox='0 0 24 24'
@@ -14,4 +14,4 @@ const Library = ({ className }: IconProps) => {
 	)
 }
 
-export default Library
+

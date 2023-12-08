@@ -1,32 +1,29 @@
 import { useRef } from 'react'
-import { useStore } from '@nanostores/react'
 import { useAudio } from '@hooks/useAudio'
 import Slider from './Slider'
-import { musicStore, nextSong, prevSong, setPlay } from '@stores/music'
-import Play from '@icons/Play'
-import Pause from '@icons/Pause'
-import Back from '@icons/Back'
-import Next from '@icons/Next'
+import { nextSong, prevSong, setPlay } from '@stores/music'
+import { Back, Play, Pause, Next } from '@icons/index'
 import { format } from '@utils/format'
+import useMusicData from '@hooks/useMusicData'
 
 const iconClassNames = 'fill-black w-4 h-4'
 const btnClassNames = 'disabled:cursor-not-allowed disabled:opacity-70'
 
 const Controls = () => {
-	const store = useStore(musicStore)
 	const audioRef = useRef<HTMLAudioElement>()
+	const musicData = useMusicData()
 
 	const handlePlay = () => {
-		setPlay(!store.isPlay)
+		setPlay(!musicData.isPlay)
 	}
 
 	const { duration, progress, setPosition } = useAudio({
 		ref: audioRef,
 		options: {
-			id: store.id,
-			play: store.isPlay,
-			src: store.songs[store.current].src,
-			volume: store.volume,
+			id: musicData.id,
+			play: musicData.isPlay,
+			src: musicData.songs[musicData.current].src,
+			volume: musicData.volume,
 			autoplay: true,
 			onEnded: nextSong,
 		},
@@ -40,7 +37,7 @@ const Controls = () => {
 				<div className='flex gap-6'>
 					<button
 						onClick={prevSong}
-						disabled={!store.prevSong}
+						disabled={!musicData.prevSong}
 						className={btnClassNames}
 					>
 						<Back />
@@ -49,15 +46,12 @@ const Controls = () => {
 						className='w-8 h-8 rounded-full bg-white grid place-content-center hover:scale-105 transition-all duration-300'
 						onClick={handlePlay}
 					>
-						{store.isPlay ? (
-							<Pause className={iconClassNames} />
-						) : (
-							<Play className={iconClassNames} />
-						)}
+						{musicData.isPlay && <Pause className={iconClassNames} />}
+						{!musicData.isPlay && <Play className={iconClassNames} />}
 					</button>
 					<button
 						onClick={nextSong}
-						disabled={!store.nextSong}
+						disabled={!musicData.nextSong}
 						className={btnClassNames}
 					>
 						<Next />
