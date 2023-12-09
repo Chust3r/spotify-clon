@@ -5,7 +5,7 @@ import Header from './UI/Header'
 <main
 	class='w-full [grid-area:main] bg-background rounded-md relative overflow-hidden z-0'
 >
-	<Header />
+	<Header client:load transition:persist transition:name="header_navigation"/>
 
 	<slot />
 </main>

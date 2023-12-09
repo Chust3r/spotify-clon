@@ -15,7 +15,7 @@ const { title, thumbnail, color, type, author, songs } = playlist
 const titleLength = title.length > 13
 ---
 
-<Layout title='Spotify'>
+<Layout title={`Spotify  ${title}`}>
 	<section class='flex flex-col gap-3'>
 		<div
 			class={cn(
