@@ -3,6 +3,7 @@ import Layout from '@layouts/Layout.astro'
 import Greetings from '@components/UI/Greetings.astro'
 import Playlist from '@components/Playlist.astro'
 
+
 import { playlists } from '../data/playlists'
 ---
 
@@ -15,4 +16,5 @@ import { playlists } from '../data/playlists'
 	<section class='grid grid-cols-2 lg:grid-cols-3 gap-2 py-5 px-4'>
 		{playlists.map((playlist) => <Playlist {...playlist} />)}
 	</section>
+	
 </Layout>

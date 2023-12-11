@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react'
-
 const Icon = ({ className }: { className?: string }) => {
 	return (
 		<svg
@@ -14,34 +12,13 @@ const Icon = ({ className }: { className?: string }) => {
 }
 
 const Header = () => {
-	const [history, setHistory] = useState<History>()
-
-	useEffect(() => {
-		setHistory(window.history)
-	}, [])
-
-	const handleBack = () => {
-		history?.back()
-	}
-
-	const handleForward = () => {
-		history?.forward()
-		console.log(history)
-	}
-
 	return (
-		<header className='h-16  w-full bg-transparent flex items-center px-4'>
+		<header className='h-16  w-full bg-transparent flex items-center px-4 sticky top-0 z-10'>
 			<nav className='flex gap-3 items-center justify-between'>
-				<button
-					className='bg-background/50 rounded-full w-8 h-8 grid place-content-center '
-					onClick={handleBack}
-				>
+				<button className='bg-background/50 rounded-full w-8 h-8 grid place-content-center '>
 					<Icon />
 				</button>
-				<button
-					className='bg-background/50 rounded-full w-8 h-8 grid place-content-center'
-					onClick={handleForward}
-				>
+				<button className='bg-background/50 rounded-full w-8 h-8 grid place-content-center'>
 					<Icon className='rotate-180' />
 				</button>
 			</nav>

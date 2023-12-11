@@ -1,11 +1,19 @@
 ---
 import Header from './UI/Header'
+
 ---
 
 <main
-	class='w-full [grid-area:main] bg-background rounded-md relative overflow-hidden z-0'
+	class='w-full [grid-area:main] bg-background rounded-md relative overflow-y-auto z-0 '
 >
-	<Header client:load transition:persist transition:name="header_navigation"/>
+	<Header/>
 
 	<slot />
 </main>
+
+<style is:inline>
+	main::-webkit-scrollbar{
+		opacity: 0;
+		width: 0px;
+	}
+</style>

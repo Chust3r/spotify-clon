@@ -24,7 +24,7 @@ export const playlists: Playlist[] = [
 		author: 'Sub Urban',
 		type: 'Álbum',
 		songs: songs_HIVE,
-		color: 'bg-red-900',
+		color: 'bg-gradient-to-r from-red-900 to-red-800/30',
 	},
 	{
 		id: 'TMQQmB8RBY',

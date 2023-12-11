@@ -3,23 +3,31 @@ import Layout from '@layouts/Layout.astro'
 import { playlists } from '../../data/playlists'
 import { cn } from '@utils/cn'
 import PlaylistBtn from '@components/UI/PlaylistBtn'
+import Table from "@components/UI/Table.astro"
+import MainFooter from '@components/UI/MainFooter.astro';
 
-const { id } = Astro.params
+export async function getStaticPaths(){
 
-const playlist = playlists.find((playlist) => playlist.id === id)
+	return playlists.map(({id,...playlist})=>{
+		return {
+			params:{id},
+			props:{...playlist}
+		}
+	})
+}
 
-if(!playlist) return Astro.redirect("/")
+const {id} = Astro.params
 
-const { title, thumbnail, color, type, author, songs } = playlist
+const { title, thumbnail, color, type, author, songs } = Astro.props
 
-const titleLength = title.length > 13
+const titleLength = title.length >13
 ---
 
-<Layout title={`Spotify  ${title}`}>
+<Layout title={`${title}`}>
 	<section class='flex flex-col gap-3'>
 		<div
 			class={cn(
-				'absolute inset-0 h-[600px] blur-3xl fade -z-[1] -translate-y-10',
+				'absolute inset-0 h-[500px] blur-3xl fade -z-[1] -translate-y-10',
 				color
 			)}
 		>
@@ -51,7 +59,7 @@ const titleLength = title.length > 13
 				</div>
 			</div>
 		</div>
-		<div class='bg-background/60 w-full h-96 backdrop-blur px-4 py-4'>
+		<div class='bg-background/60 w-full min-h-fit backdrop-blur px-4 py-4'>
 			<div class='w-full h-16'>
 				<PlaylistBtn
 					client:visible
@@ -61,6 +69,7 @@ const titleLength = title.length > 13
 					iconClasses='w-5 h-5'
 				/>
 			</div>
+			<Table songs={songs}/>
 		</div>
 	</section>
 </Layout>
