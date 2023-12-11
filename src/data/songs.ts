@@ -130,7 +130,7 @@ const songs_BELLA_POARCH: Song[] = [
 		id: 3,
 		title: 'Crush',
 		authors: ['Bella Poarch', 'Lauv'],
-		src: 'public/music/04/Bella Poarch Crush.mp3',
+		src: '/music/04/Bella Poarch Crush.mp3',
 		thumbnail:
 			'https://static.qobuz.com/images/covers/qc/rg/elx7nwl8grgqc_600.jpg',
 		album: 'Crush',
