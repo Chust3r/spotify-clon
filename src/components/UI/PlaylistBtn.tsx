@@ -1,4 +1,4 @@
-import type { Song } from 'src/types/types.ts'
+import type { Songs } from 'src/types/types.ts'
 import { useState, useEffect } from 'react'
 import { useStore } from '@nanostores/react'
 import { musicStore, setPlay } from '../../stores/music.ts'
@@ -7,7 +7,7 @@ import { cn } from '@utils/cn'
 import { Play, Pause } from '@icons/index'
 
 interface PlayBtnProps {
-	songs: Song[]
+	songs: Songs
 	id: string
 	wrapperClasses?: string
 	iconClasses?: string
