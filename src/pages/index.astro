@@ -2,9 +2,12 @@
 import Layout from '@layouts/Layout.astro'
 import Greetings from '@components/UI/Greetings.astro'
 import Playlist from '@components/Playlist.astro'
-
-
 import { playlists } from '../data/playlists'
+import { songs_TOP} from 'src/data/songs'
+import { fetchTopTracks } from '@utils/fetchers'
+import Songs from '@components/UI/Songs.astro'
+
+const songs_TOP_DEEZER = await fetchTopTracks({limit:16})
 ---
 
 <Layout title='Spotify'>
@@ -16,5 +19,7 @@ import { playlists } from '../data/playlists'
 	<section class='grid grid-cols-2 lg:grid-cols-3 gap-2 py-5 px-4'>
 		{playlists.map((playlist) => <Playlist {...playlist} />)}
 	</section>
+	<Songs title='Top canciones' songs={songs_TOP}/>
+	<Songs title='Top Deezer' songs={songs_TOP_DEEZER}/>
 	
 </Layout>

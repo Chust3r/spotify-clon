@@ -4,7 +4,8 @@ import { playlists } from '../../data/playlists'
 import { cn } from '@utils/cn'
 import PlaylistBtn from '@components/UI/PlaylistBtn'
 import Table from "@components/UI/Table.astro"
-import MainFooter from '@components/UI/MainFooter.astro';
+
+export const prerender = true
 
 export async function getStaticPaths(){
 

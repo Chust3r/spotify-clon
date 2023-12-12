@@ -1,21 +1,12 @@
+import type { Playlists } from 'src/types/types'
 import {
-	type Song,
 	songs_HIVE,
 	songs_PESO_PLUMA,
 	songs_BELLA_POARCH,
 	songs_Odisea,
 } from './songs'
-export type Playlist = {
-	id: string
-	title: string
-	thumbnail: string
-	author: string
-	type: string
-	songs: Song[]
-	color: string
-}
 
-export const playlists: Playlist[] = [
+export const playlists: Playlists = [
 	{
 		id: 'WsRe63CwTc',
 		title: 'HIVE',
