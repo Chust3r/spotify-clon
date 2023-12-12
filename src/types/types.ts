@@ -23,6 +23,15 @@ export type Song = {
 
 export type Songs = Song[]
 
+export type Artist = {
+	id: number
+	name: string
+	thumbnail: string
+	songs: Songs
+}
+
+export type Artists = Artist[]
+
 export interface Main {
 	data: DataDeezer[]
 	total: number
@@ -64,8 +73,7 @@ enum AlbumType {
 	Album = 'album',
 }
 
-
-interface Artist {
+export interface ArtistDeezer {
 	id: number
 	name: string
 	link: string
@@ -86,3 +94,28 @@ enum ArtistType {
 enum DatumType {
 	Track = 'track',
 }
+
+export interface MainArtist {
+	data: DataArtist[]
+	total: number
+}
+
+export interface DataArtist {
+	id: number
+	name: string
+	link: string
+	picture: string
+	picture_small: string
+	picture_medium: string
+	picture_big: string
+	picture_xl: string
+	radio: boolean
+	tracklist: string
+	position: number
+	type: Type
+}
+
+export enum Type {
+	Artist = 'artist',
+}
+

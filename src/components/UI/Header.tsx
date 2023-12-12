@@ -11,10 +11,14 @@ const Icon = ({ className }: { className?: string }) => {
 	)
 }
 
-const Header = () => {
+interface Props {
+	children?: React.ReactNode
+}
+
+const Header = ({ children }: Props) => {
 	return (
-		<header className='h-16  w-full bg-transparent flex items-center px-4 sticky top-0 z-10'>
-			<nav className='flex gap-3 items-center justify-between'>
+		<header className='h-16  w-full bg-transparent flex items-center px-4 sticky top-0 z-10 gap-4'>
+			<nav className='flex gap-3 items-center justify-between w-24'>
 				<button className='bg-background/50 rounded-full w-8 h-8 grid place-content-center '>
 					<Icon />
 				</button>
@@ -22,6 +26,7 @@ const Header = () => {
 					<Icon className='rotate-180' />
 				</button>
 			</nav>
+			<div className='w-full h-full  flex items-center'>{children}</div>
 		</header>
 	)
 }

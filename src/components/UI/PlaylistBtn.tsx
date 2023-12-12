@@ -1,10 +1,10 @@
 import type { Songs } from 'src/types/types.ts'
 import { useState, useEffect } from 'react'
-import { useStore } from '@nanostores/react'
-import { musicStore, setPlay } from '../../stores/music.ts'
+import { setPlay } from '../../stores/music.ts'
 import { setSongs } from 'src/stores/music'
 import { cn } from '@utils/cn'
 import { Play, Pause } from '@icons/index'
+import useMusicData from '@hooks/useMusicData.ts'
 
 interface PlayBtnProps {
 	songs: Songs
@@ -21,7 +21,7 @@ const PlaylistBtn = ({
 }: PlayBtnProps) => {
 	const iconStyles = cn('w-4 h-4 fill-black stroke-black ', iconClasses)
 
-	const store = useStore(musicStore)
+	const store = useMusicData()
 
 	const [isActive, setIsActive] = useState(false)
 

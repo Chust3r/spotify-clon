@@ -4,6 +4,8 @@ import { playlists } from '../../data/playlists'
 import { cn } from '@utils/cn'
 import PlaylistBtn from '@components/UI/PlaylistBtn'
 import Table from "@components/UI/Table.astro"
+import Header from '@components/UI/Header'
+
 
 export const prerender = true
 
@@ -25,6 +27,7 @@ const titleLength = title.length >13
 ---
 
 <Layout title={`${title}`}>
+	<Header/>
 	<section class='flex flex-col gap-3'>
 		<div
 			class={cn(
@@ -70,7 +73,7 @@ const titleLength = title.length >13
 					iconClasses='w-5 h-5'
 				/>
 			</div>
-			<Table songs={songs}/>
+			<Table songs={songs} playlist={id}/>
 		</div>
 	</section>
 </Layout>

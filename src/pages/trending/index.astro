@@ -1,0 +1,28 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Header from '@components/UI/Header'
+import Songs from '@components/UI/Songs.astro'
+import {
+	fetchTopTracks,
+	fetchTopArtists,
+	fetchArtistTopTracks,
+} from '@utils/fetchers'
+import Artitsts from '@components/UI/Artitsts.astro'
+
+const artists_TOP = await fetchTopArtists({ limit: 4 })
+
+const songs_TOP = await fetchTopTracks({ limit: 50 })
+
+const songs_BAD_BUNNY = await fetchArtistTopTracks(10583405)
+---
+
+<Layout title='Trending'>
+	<Header />
+	<div
+		class='w-full h-80 absolute inset-0 -z-[1] blur-3xl -translate-y-10 bg-gradient-to-r from-neutral-600/40'
+	>
+	</div>
+	<Artitsts artists={artists_TOP} title='Top artistas' />
+	<Songs songs={songs_BAD_BUNNY} title='Top Bad Bunny' />
+	<Songs songs={songs_TOP} title='Top 50 canciones' />
+</Layout>

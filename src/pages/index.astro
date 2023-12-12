@@ -1,16 +1,17 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import Greetings from '@components/UI/Greetings.astro'
-import Playlist from '@components/Playlist.astro'
+import Playlist from '@components/UI/Playlist.astro'
 import { playlists } from '../data/playlists'
 import { songs_TOP} from 'src/data/songs'
 import { fetchTopTracks } from '@utils/fetchers'
 import Songs from '@components/UI/Songs.astro'
-
-const songs_TOP_DEEZER = await fetchTopTracks({limit:16})
+import Header from '@components/UI/Header'
+const songs_TOP_DEEZER = await fetchTopTracks({limit:4})
 ---
 
 <Layout title='Spotify'>
+	<Header/>
 	<div
 		class='w-full h-80 absolute inset-0 -z-[1] blur-3xl -translate-y-10 bg-gradient-to-r from-neutral-600/40'
 	>

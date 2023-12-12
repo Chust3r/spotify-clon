@@ -1,10 +1,10 @@
 ---
-import Box from '../UI/Box.tsx'
-import SidebarItem from './SidebarItem.astro'
-import { Search,Home,Library} from '@icons/index'
-import SideOption from './SideOption.astro'
+import Box from './UI/Box.tsx'
+import SidebarItem from './Sidebar/SidebarItem.astro'
+import { Trending, Home, Library } from '@icons/index'
+import SideOption from './Sidebar/SideOption.astro'
 
-import { playlists } from '../../data/playlists.ts'
+import { playlists } from '../data/playlists.ts'
 ---
 
 <aside class='[grid-area:sidebar] flex flex-col gap-2 overflow-hidden'>
@@ -16,9 +16,12 @@ import { playlists } from '../../data/playlists.ts'
 				<Home /> Inicio
 			</SideOption></a
 		>
-		<SideOption>
-			<Search /> Buscar
-		</SideOption>
+		<a href='/trending
+		'
+			><SideOption>
+				<Trending /> Trending
+			</SideOption></a
+		>
 	</Box>
 
 	<Box className='h-full rounded-md flex flex-col overflow-hidden'>

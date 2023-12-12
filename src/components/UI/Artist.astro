@@ -1,0 +1,30 @@
+---
+import type { Artist } from 'src/types/types'
+
+interface Props {
+	artist: Artist
+}
+
+const { artist } = Astro.props
+
+const { name, thumbnail } = artist
+---
+
+<div
+	class='min-w-56 w-56 min-h-72 h-72 bg-[#181818] rounded-md overflow-hidden relative group z-[1] select-none'
+>
+	<div class='w-56 h-52 flex items-center justify-center'>
+		<img
+			src={thumbnail}
+			alt={name}
+			class='rounded-full w-44 h-44 object-cover'
+			aria-hidden='true'
+		/>
+	</div>
+	<div class='w-full h-20 px-5'>
+		<p class='font-bold text-white line-clamp-2'>{name}</p>
+		<span class='pr-3 text-sm font-light text-foreground line-clamp-2'
+			>Artista</span
+		>
+	</div>
+</div>

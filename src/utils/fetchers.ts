@@ -1,4 +1,4 @@
-import { adapterDeezer } from './adapaters'
+import { adapterDeezer, adapterArtists } from './adapaters'
 
 const base = 'https://api.deezer.com'
 
@@ -31,7 +31,7 @@ export async function fetchTopArtists({ limit = 3 } = {}) {
 	const promises = data.map((artist) => fetchArtist(artist.id))
 	const topArtists = await Promise.all(promises)
 
-	return topArtists
+	return adapterArtists(topArtists)
 }
 
 export async function fetchTopPlaylists() {
@@ -48,41 +48,11 @@ export async function fetchArtist(id) {
 	return data
 }
 
-export async function fetchArtistTopTracks(id) {
+export async function fetchArtistTopTracks(id: number) {
 	const endpoint = `/artist/${id}/top`
 	const { data } = await fetchData(endpoint)
 
-	return data
+	return adapterDeezer(data)
 }
 
-export async function fetchArtistAlbums(id, { limit = 9999 } = {}) {
-	const endpoint = `/artist/${id}/albums?limit=${limit}`
-	const { data } = await fetchData(endpoint)
 
-	return data
-}
-
-export async function fetchAlbum(id) {
-	const endpoint = `/album/${id}`
-	const data = await fetchData(endpoint)
-
-	return data
-}
-
-export async function fetchPlaylist(id) {
-	const endpoint = `/playlist/${id}`
-	const data = await fetchData(endpoint)
-
-	return data
-}
-
-export async function fetchSearchData(query, { limit = 3 } = {}) {
-	const endpoint = (category) =>
-		`/search/${category}?q=${query}&limit=${limit}`
-
-	const tracksPromise = fetchData(endpoint('track'))
-	const albumsPromise = fetchData(endpoint('album'))
-	const artistsPromise = fetchData(endpoint('artist'))
-
-	return await Promise.all([tracksPromise, albumsPromise, artistsPromise])
-}
