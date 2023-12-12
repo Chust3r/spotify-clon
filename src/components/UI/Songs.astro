@@ -1,10 +1,10 @@
 ---
 import Song from './Song.astro'
-import type { Song as SongType } from 'src/data/songs'
+import type{ Songs} from 'src/types/types'
 
 interface Props {
 	title: string
-	songs: SongType[]
+	songs:Songs
 }
 
 const { title, songs } = Astro.props

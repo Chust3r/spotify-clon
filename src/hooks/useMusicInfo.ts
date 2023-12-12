@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useStore } from '@nanostores/react'
 import { musicStore } from '@stores/music'
-import type { Song } from 'src/data/songs'
+import type { Song } from 'src/types/types'
 
 const useMusicInfo = () => {
 	const { songs, current } = useStore(musicStore)

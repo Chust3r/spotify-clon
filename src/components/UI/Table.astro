@@ -1,9 +1,9 @@
 ---
 import { format } from '@utils/format';
-import type { Song } from 'src/data/songs'
+import type{ Songs } from 'src/types/types';
 
 interface Props {
-	songs: Song[]
+	songs: Songs
 }
 
 const { songs } = Astro.props

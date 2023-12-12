@@ -1,4 +1,4 @@
-import type { Song } from 'src/data/songs'
+import type { Song } from 'src/types/types.ts'
 import { useState, useEffect } from 'react'
 import { useStore } from '@nanostores/react'
 import { musicStore, setPlay } from '../../stores/music.ts'

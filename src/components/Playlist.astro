@@ -1,5 +1,5 @@
 ---
-import type { Song } from 'src/data/songs'
+import type { Songs } from 'src/types/types'
 import PlaylistBtn from './UI/PlaylistBtn'
 
 
@@ -8,7 +8,7 @@ interface Props {
 	thumbnail: string
 	title: string
 	color: string
-	songs: Song[]
+	songs: Songs
 }
 
 const { color, thumbnail, title, id, songs } = Astro.props

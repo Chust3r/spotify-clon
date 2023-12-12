@@ -1,9 +1,10 @@
 import { map } from 'nanostores'
-import { songs_HIVE, type Song } from 'src/data/songs'
+import { songs_HIVE, } from 'src/data/songs'
+import type { Songs } from 'src/types/types'
 
 export interface MusicStore {
 	id: string
-	songs: Song[]
+	songs: Songs
 	current: number
 	nextSong: boolean
 	prevSong: boolean
@@ -33,7 +34,7 @@ const checkQueue = (index: number) => {
 	}
 }
 
-export const setSongs = (songs: Song[], id: string) => {
+export const setSongs = (songs: Songs, id: string) => {
 	const { isNextSong, isPrevSong } = checkQueue(0)
 
 	musicStore.set({
