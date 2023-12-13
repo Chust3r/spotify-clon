@@ -2,7 +2,6 @@
 
 const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
-const scrollbar = require('tailwind-scrollbar')
 const tailwindClamp = require('@tailwindcss/line-clamp')
 
 export default {
@@ -20,5 +19,5 @@ export default {
 			},
 		},
 	},
-	plugins: [scrollbar, tailwindClamp],
+	plugins: [ tailwindClamp],
 }

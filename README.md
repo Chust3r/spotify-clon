@@ -11,4 +11,4 @@
 - **Nanostores (state mangment)**
 - **TypeScript**
 
-    Make with love 💕
+Make with love 💕
